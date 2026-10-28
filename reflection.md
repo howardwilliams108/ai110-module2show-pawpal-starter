@@ -3,9 +3,14 @@
 ## 1. System Design
 
 **a. Initial design**
+1. The user can schedule taks such as, walking, feeding, and medication.
+2. The user can add pets and store their basic information.
+3. The user can view their daily schedules and track completed tasks.
 
 - Briefly describe your initial UML design.
-- What classes did you include, and what responsibilities did you assign to each?
+My initial UML design includes four(4) main classes:
+Owner, Pet, Task, and Scheduler; Owner class stores information about the pet owner, and manages their pet. The Task class represents activities such as feeding and walking, including their rueation, priority, and completion status. The Scheduler class organizes tasks by time, filter tasks, and detects scheduling conflicts. The Pet class stores a list of tasks and basic pet information.
+- What classes did you include, and what responsibilities did you assign to each? I made a change to my initial UML design by a due_date attribute to the Task class. I did this so the Scheduler can distinguish tasks scheduled at the same time on different days. This will help the system manage daily and weekly tasks.
 
 **b. Design changes**
 
