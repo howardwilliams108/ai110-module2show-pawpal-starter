@@ -70,30 +70,49 @@ Sample test output:
 ```text
 tests/test_pawpal.py::test_task_completion PASSED
 tests/test_pawpal.py::test_task_addition PASSED
+tests/test_pawpal.py::test_scheduling_conflict PASSED
+tests/test_pawpal.py::test_daily_recurring_task PASSED
+tests/test_pawpal.py::test_weekly_recurring_task PASSED
+tests/test_pawpal.py::test_one_time_task PASSED
+tests/test_pawpal.py::test_duplicate_completion PASSED
 
-2 passed in 0.05
+7 passed in 0.07s
+
 
 ```
 
 ## 📐 Smarter Scheduling
 
-> Fill in once you've implemented scheduling logic.
+
 
 | Feature | Method(s) | Notes |
 |---------|-----------|-------|
-| Task sorting | | e.g., by priority, duration |
-| Filtering | | e.g., skip tasks if time runs out |
-| Conflict handling | | e.g., overlapping time slots |
-| Recurring tasks | | e.g., daily vs. weekly |
+| Task sorting | `sort_by_time()` | It sorts tasks by due date and scheduled time. |
+| Filtering | `filter_tasks()`, `filter_by_pet()` | They filter tasks by completion status or pet name. |
+| Conflict handling | `detect_conflicts()` | This detects tasks with the same date and start time. |
+| Recurring tasks | `mark_task_complete()` | It creates the next occurrence for daily and weekly tasks; one-time tasks do not repeat. |
+
+
+
 
 ## 📸 Demo Walkthrough
 
-Describe your app in numbered steps so a reader can follow along without watching a video:
+1. Run the PawPal+ application using `python -m streamlit run app.py`.
+2. Enter the owner's name, pet's name, and species, then click **Add pet**.
+3. Select a pet and enter a task description, duration, priority, scheduled time, due date, and frequency.
+4. Click **Add task** to assign the task to the selected pet.
+5. View the pet's tasks in the table, including completion status.
+6. Select an incomplete task and click **Complete task**. Daily and weekly tasks create their next occurrence automatically.
+7. Click **Generate schedule** to display the owner's pet care tasks in chronological order.
+8. If two tasks have the same due date and starting time, the application displays a scheduling conflict warning.
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
 
-**Screenshot or video** *(optional)*: <!-- Insert a screenshot or link to a demo video here -->
+## Current Limitations
+
+- The Streamlit schedule displays tasks chronologically.
+- Users cannot edit existing tasks through the interface.
+- The displayed conflict detection currently identifies tasks with matching dates and start times.
+- Owner preferences are stored but are not applied to scheduling.
+- Task information is stored temporarily in Streamlit session state.
+
+
